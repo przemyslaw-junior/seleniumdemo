@@ -17,8 +17,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://seleniumdemo.com/");
     }
-    @AfterMethod
+  /*  @AfterMethod
     public void tearDown() {
         driver.quit();
-    }
+    }*/
 }
