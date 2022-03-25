@@ -20,4 +20,15 @@ public class RegisterTest extends BaseTest {
 
         Assert.assertEquals(dashboardLink.getText(), "Dashboard");
     }
+
+    @Test
+    public void registerUserWithSameEmailTest(){
+        WebElement error = new HomePage(driver)
+                .openMyAccountPage()
+                .registerUser("juniortest@gmail.com", "juniortest@gmail.com")
+                .getError();
+
+        Assert.assertTrue(error.getText().contains("An account is already registered with your email address"));
+
+    }
 }
