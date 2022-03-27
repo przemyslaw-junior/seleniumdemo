@@ -5,30 +5,28 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.testeroprogramowania.pages.HomePage;
 
-public class RegisterTest extends BaseTest {
+public class LoginTest extends BaseTest {
 
     @Test
-    public void registerUserTest() {
-
-        int randomNumber = (int)(Math.random()*1000);
-        String email = "juniorTest" + randomNumber + "@gmail.com";
+    public void logInTest() {
 
         WebElement dashboardLink = new HomePage(driver)
                 .openMyAccountPage()
-                .registerUserValidData(email, "juniortest@gmail.com" )
+                .logInValidData("juniortest@gmail.com", "juniortest@gmail.com" )
                 .getDashboardLink();
 
         Assert.assertEquals(dashboardLink.getText(), "Dashboard");
     }
 
     @Test
-    public void registerUserWithSameEmailTest(){
+    public void logInWithInvalidPasswordTest(){
         WebElement error = new HomePage(driver)
                 .openMyAccountPage()
-                .registerUserInvalidData("juniortest@gmail.com", "juniortest@gmail.com")
+                .logInInvalidData("juniortest@gmail.com", "test@gmail.com")
                 .getError();
 
-        Assert.assertTrue(error.getText().contains("An account is already registered with your email address"));
+        Assert.assertTrue(error.getText()
+                .contains("Incorrect username or password."), "Expected error text doesn't match'");
 
     }
 }
