@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pl.testeroprogramowania.models.Customer;
 
 public class AddressDetailsPage {
 
@@ -51,5 +52,20 @@ public class AddressDetailsPage {
         this.driver = driver;
     }
 
+    public OrderDetailsPage fillAddressDetails(Customer customer){
 
+        firstNameInput.sendKeys(customer.getFirstName());
+        lastNameInput.sendKeys(customer.getLastName());
+        companyNameInput.sendKeys(customer.getCompanyName());
+
+        billingCountryInput.sendKeys(customer.getCountry());
+
+        billingAddressInput.sendKeys(String.format("%s %s",customer.getStreet(), customer.getFlatNumber()));
+        billingPostcodeInput.sendKeys(customer.getZipCode());
+        billingCityInput.sendKeys(customer.getCity());
+        billingPhoneInput.sendKeys(customer.getPhone());
+        billingEmailInput.sendKeys(customer.getEmail());
+        placeOrderButton.click();
+        return new OrderDetailsPage(driver);
+    }
 }
