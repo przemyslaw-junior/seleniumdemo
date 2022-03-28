@@ -1,7 +1,5 @@
 package pl.testeroprogramowania.tests;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pl.testeroprogramowania.pages.HomePage;
 
@@ -13,6 +11,8 @@ public class CheckoutTest extends BaseTest{
         new HomePage(driver)
                 .openShopPage()
                 .openProduct("Java Selenium WebDriver")
-                .addProductToCart();
+                .addProductToCart()
+                .viewCart()
+                .openAddressDetails();
     }
 }

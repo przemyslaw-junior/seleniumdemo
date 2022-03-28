@@ -8,13 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 public class MyAccountPage {
 
     private WebDriver driver;
-    @FindBy(id="reg_email")
+
+    @FindBy(id = "reg_email")
     private WebElement regEmailInput;
 
-    @FindBy(id="reg_password")
+    @FindBy(id = "reg_password")
     private WebElement regPasswordInput;
 
-    @FindBy(name="register")
+    @FindBy(name = "register")
     private WebElement registerButton;
 
     @FindBy(xpath = "//ul[@class='woocommerce-error']//li")
@@ -30,39 +31,44 @@ public class MyAccountPage {
     private WebElement loginButton;
 
 
-    public MyAccountPage (WebDriver driver){
+    public MyAccountPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public LoggedUserPage registerUserValidData (String email, String password){
+    public LoggedUserPage registerUserValidData(String email, String password) {
         registerUser(email, password);
         return new LoggedUserPage(driver);
     }
-    public MyAccountPage registerUserInvalidData (String email, String password){
+
+    public MyAccountPage registerUserInvalidData(String email, String password) {
         registerUser(email, password);
         return this;
     }
-    private void registerUser(String email, String password){
+
+    private void registerUser(String email, String password) {
         regEmailInput.sendKeys(email);
         regPasswordInput.sendKeys(password);
         registerButton.click();
     }
-    public LoggedUserPage logInValidData(String username, String password){
+
+    public LoggedUserPage logInValidData(String username, String password) {
         logInUser("juniortest@gmail.com", "juniortest@gmail.com");
         return new LoggedUserPage(driver);
     }
-    public MyAccountPage logInInvalidData(String username, String password){
-        logInUser("junior","junior");
+
+    public MyAccountPage logInInvalidData(String username, String password) {
+        logInUser("junior", "junior");
         return this;
     }
-    private void logInUser(String username, String password){
+
+    private void logInUser(String username, String password) {
         usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
         loginButton.click();
     }
 
-    public WebElement getError(){
+    public WebElement getError() {
         return error;
     }
 }

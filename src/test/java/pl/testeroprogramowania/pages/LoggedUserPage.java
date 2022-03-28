@@ -11,7 +11,6 @@ public class LoggedUserPage {
     private WebElement dashboardLink;
 
 
-
     public WebDriver driver;
 
     public LoggedUserPage(WebDriver driver) {
@@ -19,7 +18,7 @@ public class LoggedUserPage {
         this.driver = driver;
     }
 
-    public WebElement getDashboardLink(){
+    public WebElement getDashboardLink() {
         return dashboardLink;
     }
 }

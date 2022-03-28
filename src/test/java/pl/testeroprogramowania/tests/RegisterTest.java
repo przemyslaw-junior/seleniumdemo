@@ -9,20 +9,19 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void registerUserTest() {
-
-        int randomNumber = (int)(Math.random()*1000);
+        int randomNumber = (int) (Math.random() * 1000);
         String email = "juniorTest" + randomNumber + "@gmail.com";
 
         WebElement dashboardLink = new HomePage(driver)
                 .openMyAccountPage()
-                .registerUserValidData(email, "juniortest@gmail.com" )
+                .registerUserValidData(email, "juniortest@gmail.com")
                 .getDashboardLink();
 
         Assert.assertEquals(dashboardLink.getText(), "Dashboard");
     }
 
     @Test
-    public void registerUserWithSameEmailTest(){
+    public void registerUserWithSameEmailTest() {
         WebElement error = new HomePage(driver)
                 .openMyAccountPage()
                 .registerUserInvalidData("juniortest@gmail.com", "juniortest@gmail.com")
