@@ -11,14 +11,14 @@ public class LoginTest extends BaseTest {
     public void logInTest() {
         WebElement dashboardLink = new HomePage(driver)
                 .openMyAccountPage()
-                .logInValidData("juniortest@gmail.com", "juniortest@gmail.com")
+                .logInValidData("juniortestowy@gmail.com", "juniortestowy@gmail.com")
                 .getDashboardLink();
 
         Assert.assertEquals(dashboardLink.getText(), "Dashboard");
     }
 
     @Test
-    public void logInWithInvalidPasswordTest() {
+    public void logInWithInvalidDataTest() {
         WebElement error = new HomePage(driver)
                 .openMyAccountPage()
                 .logInInvalidData("juniortest@gmail.com", "test@gmail.com")

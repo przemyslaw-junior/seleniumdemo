@@ -51,7 +51,6 @@ public class AddressDetailsPage {
     private WebElement placeOrderButton;
 
     public AddressDetailsPage(WebDriver driver) {
-
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }

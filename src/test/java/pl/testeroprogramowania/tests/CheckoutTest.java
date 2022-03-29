@@ -10,7 +10,6 @@ public class CheckoutTest extends BaseTest{
 
     @Test
     public void checkoutTest() {
-
         Customer customer = new Customer();
 
         OrderDetailsPage orderDetailsPage = new HomePage(driver)

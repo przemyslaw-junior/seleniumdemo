@@ -28,6 +28,5 @@ public class RegisterTest extends BaseTest {
                 .getError();
 
         Assert.assertTrue(error.getText().contains("An account is already registered with your email address"));
-
     }
 }
