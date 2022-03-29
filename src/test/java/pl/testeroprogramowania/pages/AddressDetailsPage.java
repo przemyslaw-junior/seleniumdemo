@@ -32,8 +32,11 @@ public class AddressDetailsPage {
     @FindBy(id = "billing_postcode")
     private WebElement billingPostcodeInput;
 
-    @FindBy(id = "billing_postcode")
+    @FindBy(id = "billing_city")
     private WebElement billingCityInput;
+
+    @FindBy(id = "billing_state")
+    private WebElement billingProvinceInput;
 
     @FindBy(id = "billing_phone")
     private WebElement billingPhoneInput;
@@ -61,6 +64,10 @@ public class AddressDetailsPage {
         Select countrySelect = new Select(billingCountryInput);
         countrySelect.selectByVisibleText(customer.getCountry());
         billingAddressInput.sendKeys(String.format("%s %s",customer.getStreet(), customer.getFlatNumber()));
+        if (billingProvinceInput.isDisplayed()){
+            Select provinceSelect = new Select(billingProvinceInput);
+            provinceSelect.selectByVisibleText(customer.getProvince());
+        }
         billingPostcodeInput.sendKeys(customer.getZipCode());
         billingCityInput.sendKeys(customer.getCity());
         billingPhoneInput.sendKeys(customer.getPhone());
