@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import pl.testeroprogramowania.models.Customer;
 
 public class AddressDetailsPage {
@@ -19,7 +20,7 @@ public class AddressDetailsPage {
     @FindBy(id = "billing_company")
     private WebElement companyNameInput;
 
-    @FindBy(id = "select2-billing_country-container")
+    @FindBy(id = "billing_country")
     private WebElement billingCountryInput;
 
     @FindBy(id = "billing_address_1")
@@ -52,14 +53,13 @@ public class AddressDetailsPage {
         this.driver = driver;
     }
 
-    public OrderDetailsPage fillAddressDetails(Customer customer){
+    public OrderDetailsPage fillAddressDetails(Customer customer, String comments){
 
         firstNameInput.sendKeys(customer.getFirstName());
         lastNameInput.sendKeys(customer.getLastName());
         companyNameInput.sendKeys(customer.getCompanyName());
-
-        billingCountryInput.sendKeys(customer.getCountry());
-
+        Select countrySelect = new Select(billingCountryInput);
+        countrySelect.selectByVisibleText(customer.getCountry());
         billingAddressInput.sendKeys(String.format("%s %s",customer.getStreet(), customer.getFlatNumber()));
         billingPostcodeInput.sendKeys(customer.getZipCode());
         billingCityInput.sendKeys(customer.getCity());
