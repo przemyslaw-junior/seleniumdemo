@@ -18,8 +18,8 @@ public class BaseTest {
         driver.get("http://seleniumdemo.com/");
     }
 
-    @AfterMethod
+    /*@AfterMethod
     public void tearDown() {
         driver.quit();
-    }
+    }*/
 }

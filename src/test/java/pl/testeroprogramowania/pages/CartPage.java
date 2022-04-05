@@ -12,6 +12,9 @@ public class CartPage {
     @FindBy(partialLinkText = "Proceed to checkout")
     private WebElement proceedToCheckoutButton;
 
+    @FindBy(partialLinkText = "Return to shop")
+    private WebElement returnToShopButton;
+
     public CartPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;

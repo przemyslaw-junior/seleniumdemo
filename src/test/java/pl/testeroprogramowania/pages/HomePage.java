@@ -13,6 +13,9 @@ public class HomePage {
     @FindBy(id = "menu-item-21")
     private WebElement shopLink;
 
+    @FindBy(id = "menu-item-20")
+    private WebElement cartLink;
+
     private WebDriver driver;
 
     public HomePage(WebDriver driver) {
@@ -28,5 +31,10 @@ public class HomePage {
     public ProductListPage openShopPage() {
         shopLink.click();
         return new ProductListPage(driver);
+    }
+
+    public CartPage openCartPage() {
+        cartLink.click();
+        return new CartPage(driver);
     }
 }
